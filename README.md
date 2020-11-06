@@ -74,7 +74,7 @@ $ ./scionftp -local YOUR_LOCAL_SICON_ADDRESS_WITH_PORT -hercules ./hercules
 
 **Do not run** this command with root permissions, `scionftp` will invoke Hercules using `sudo`.
 
-After staring the scionFTP client, connect to the DOI scionFTP server and log in:
+After starting the scionFTP client, connect to the DOI scionFTP server and log in:
 
 ```
 > connect 64-2:0:b,[192.33.125.17]:2121
@@ -117,7 +117,7 @@ Create a configuration file (e.g. `hercules-config.toml`) with the following con
 ```bash
 Direction = "download"
 ConfigureQueues = true
-Queues = [ 1 ] # This line is optional; if you specify it, make sure to use valid queue number
+Queues = [ 1 ] # This line is optional; if you specify it, make sure to use a valid queue number
 ```
 
 You can find the number of available queues with `ethtool -n INTERFACE_NAME`.
@@ -167,10 +167,10 @@ As Hercules transfers are expected to complete quickly, you will probably succee
 
 ### A Note on Huge Pages
 
-If you want to download large files (> 10GiB) at a sustainably high rate, you should use huge pages.
+If you want to download large files (> 10 GiB) at a sustainably high rate, you should use huge pages.
 To configure huge pages, please refer to the
 [Kernel documentation](https://www.kernel.org/doc/Documentation/vm/hugetlbpage.txt).
-Configure configure a `hugetlbfs`that is larger than the file you plan to download.
+Configure a `hugetlbfs` that is larger than the file you plan to download.
 Make sure to use the largest available page size.
 
 Then, in scionFTP, download the file into the `hugetlbfs`, e.g.:
