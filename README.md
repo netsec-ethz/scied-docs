@@ -43,8 +43,8 @@ Using path:
 Download scionFTP and Hercules:
 
 ```bash
-$ wget https://gitlab.ethz.ch/cneukom/doi-scionftp/-/raw/master/scionftp -o ./scionftp
-$ wget https://gitlab.ethz.ch/cneukom/doi-scionftp/-/raw/master/hercules -o ./hercules
+$ wget https://gitlab.ethz.ch/cneukom/doi-scionftp/-/raw/master/scionftp -O ./scionftp
+$ wget https://gitlab.ethz.ch/cneukom/doi-scionftp/-/raw/master/hercules -O ./hercules
 ```
 
 Verify the checksums:
