@@ -43,16 +43,16 @@ Using path:
 Download scionFTP and Hercules:
 
 ```bash
-$ wget todo:/scionftp -o ./scionftp
-$ wget todo:/hercules -o ./hercules
+$ wget https://gitlab.ethz.ch/cneukom/doi-scionftp/-/raw/master/scionftp -o ./scionftp
+$ wget https://gitlab.ethz.ch/cneukom/doi-scionftp/-/raw/master/hercules -o ./hercules
 ```
 
 Verify the checksums:
 
 ```bash
 $ md5sum scionftp hercules
-TODO scionftp
-TODO hercules
+e632092ae81f8b8a63a0c1e2f41f024a  scionftp
+9c62819269f4a7266010911465d252e6  hercules
 ```
 
 And make them executable:
