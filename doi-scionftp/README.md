@@ -51,7 +51,7 @@ Verify the checksums:
 
 ```bash
 $ md5sum scion-ftp hercules
-d6fa4899262bf0f200963598ce5894c7  scion-ftp
+05c6aaef39b11048fe471e8472acd746  scion-ftp
 d3551421cb56d3d3c5c4c4a11d6a9dc7  hercules
 ```
 
@@ -65,13 +65,15 @@ Or alternatively, you can build the binaries from the sources.
 
 ##### Building scionFTP and Hercules
 
-To build scionFTP, checkout the [SCION Apps](https://github.com/netsec-ethz/scion-apps) repository and follow the build
-instructions there.
-The binary above has been built from commit 3b2e70c34b35c39453125b8d7aa163e6779db476.
+To build scionFTP, checkout the [SCION Apps](https://github.com/netsec-ethz/scion-apps) repository (or
+[this fork](https://github.com/cneukom/scion-apps/tree/cneukom/scionftp)) and follow the build instructions there.
+The binary above has been built from commit
+https://github.com/cneukom/scion-apps/commit/c1d27f058cc45ff5e2faf06802e968e4b6be5297.
 
 For Hercules, get the source code from the [Hercules repository](https://gitlab.inf.ethz.ch/OU-PERRIG/hercules) and
 follow the build instructions there.
-The binary above has been built from commit https://gitlab.inf.ethz.ch/OU-PERRIG/hercules/-/commit/3e9e06802dcf8633e9871a6ce22bfbd006ded220.
+The binary above has been built from commit
+[3e9e06](https://gitlab.inf.ethz.ch/OU-PERRIG/hercules/-/commit/3e9e06802dcf8633e9871a6ce22bfbd006ded220).
 
 
 ### Get started
