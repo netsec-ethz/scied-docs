@@ -43,23 +43,36 @@ Using path:
 Download scionFTP and Hercules:
 
 ```bash
-$ wget https://gitlab.ethz.ch/cneukom/doi-scionftp/-/raw/master/scionftp -O ./scionftp
-$ wget https://gitlab.ethz.ch/cneukom/doi-scionftp/-/raw/master/hercules -O ./hercules
+$ wget https://raw.githubusercontent.com/netsec-ethz/scied-docs/master/scion-ftp -O ./scion-ftp
+$ wget https://raw.githubusercontent.com/netsec-ethz/scied-docs/master/hercules -O ./hercules
 ```
 
 Verify the checksums:
 
 ```bash
-$ md5sum scionftp hercules
-e632092ae81f8b8a63a0c1e2f41f024a  scionftp
-9c62819269f4a7266010911465d252e6  hercules
+$ md5sum scion-ftp hercules
+d6fa4899262bf0f200963598ce5894c7  scion-ftp
+d3551421cb56d3d3c5c4c4a11d6a9dc7  hercules
 ```
 
 And make them executable:
 
 ```bash
-$ chmod +x scionftp hercules
+$ chmod +x scion-ftp hercules
 ```
+
+Or alternatively, you can build the binaries from the sources.
+
+##### Building scionFTP and Hercules
+
+To build scionFTP, checkout the [SCION Apps](https://github.com/netsec-ethz/scion-apps) repository and follow the build
+instructions there.
+The binary above has been built from commit 3b2e70c34b35c39453125b8d7aa163e6779db476.
+
+For Hercules, get the source code from the [Hercules repository](https://gitlab.inf.ethz.ch/OU-PERRIG/hercules) and
+follow the build instructions there.
+The binary above has been built from commit https://gitlab.inf.ethz.ch/OU-PERRIG/hercules/-/commit/3e9e06802dcf8633e9871a6ce22bfbd006ded220.
+
 
 ### Get started
 
@@ -69,10 +82,10 @@ It should then look something like `64-2:0:b,[192.33.125.17]:10001`.
 If you want to use the Hercules subsystem, you need to pass Hercules' path using `-hercules`, e.g.:
 
 ```bash
-$ ./scionftp -local YOUR_LOCAL_SICON_ADDRESS_WITH_PORT -hercules ./hercules
+$ ./scion-ftp -local YOUR_LOCAL_SICON_ADDRESS_WITH_PORT -hercules ./hercules
 ```
 
-**Do not run** this command with root permissions, `scionftp` will invoke Hercules using `sudo`.
+**Do not run** this command with root permissions, `scion-ftp` will invoke Hercules using `sudo`.
 
 After starting the scionFTP client, connect to the DOI scionFTP server and log in:
 
