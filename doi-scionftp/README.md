@@ -43,8 +43,8 @@ Using path:
 Download scionFTP and Hercules:
 
 ```bash
-$ wget https://raw.githubusercontent.com/netsec-ethz/scied-docs/master/scion-ftp -O ./scion-ftp
-$ wget https://raw.githubusercontent.com/netsec-ethz/scied-docs/master/hercules -O ./hercules
+$ wget https://raw.githubusercontent.com/netsec-ethz/scied-docs/master/doi-scionftp/scion-ftp -O ./scion-ftp
+$ wget https://raw.githubusercontent.com/netsec-ethz/scied-docs/master/doi-scionftp/hercules -O ./hercules
 ```
 
 Verify the checksums:
