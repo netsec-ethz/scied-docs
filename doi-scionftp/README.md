@@ -68,7 +68,7 @@ Or alternatively, you can build the binaries from the sources.
 To build scionFTP, checkout the [SCION Apps](https://github.com/netsec-ethz/scion-apps) repository (or
 [this fork](https://github.com/cneukom/scion-apps/tree/cneukom/scionftp)) and follow the build instructions there.
 The binary above has been built from commit
-https://github.com/cneukom/scion-apps/commit/c1d27f058cc45ff5e2faf06802e968e4b6be5297.
+[c1d27f](https://github.com/cneukom/scion-apps/commit/c1d27f058cc45ff5e2faf06802e968e4b6be5297).
 
 For Hercules, get the source code from the [Hercules repository](https://gitlab.inf.ethz.ch/OU-PERRIG/hercules) and
 follow the build instructions there.
