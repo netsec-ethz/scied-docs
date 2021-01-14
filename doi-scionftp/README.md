@@ -22,14 +22,16 @@ Ask your network/system administrator to get a SCION connection.
 To test your SCION connection, ping our server at PSI:
  
 ```bash
-$ scmp echo -remote 64-2:0:b,[192.33.125.17] -c 3
+$ scion ping 64-2:0:b,[192.33.125.17] -c 3
 ```
 
 Its output should look similar to this:
 
 ```
+Resolved local address:
+  (your IP address)
 Using path:
-  Hops: [64-2:0:9 2>6 64-559 10>2 64-2:0:b] MTU: 1472, NextHop: 192.168.53.34:30042
+  Hops: [(your path)] MTU: 1472, NextHop: (next hop IP address):30042
 120 bytes from 64-2:0:b,[192.33.125.17] scmp_seq=0 time=3.305ms
 120 bytes from 64-2:0:b,[192.33.125.17] scmp_seq=1 time=3.177ms
 120 bytes from 64-2:0:b,[192.33.125.17] scmp_seq=2 time=2.944ms
@@ -51,8 +53,8 @@ Verify the checksums:
 
 ```bash
 $ md5sum scion-ftp hercules
-05c6aaef39b11048fe471e8472acd746  scion-ftp
-d3551421cb56d3d3c5c4c4a11d6a9dc7  hercules
+7e653299235156ad67294751c476f659  scion-ftp
+2264fcece22504e7d41cac57663c8836  hercules
 ```
 
 And make them executable:
@@ -68,35 +70,32 @@ Or alternatively, you can build the binaries from the sources.
 To build scionFTP, checkout the [SCION Apps](https://github.com/netsec-ethz/scion-apps) repository (or
 [this fork](https://github.com/cneukom/scion-apps/tree/cneukom/scionftp)) and follow the build instructions there.
 The binary above has been built from commit
-[c1d27f](https://github.com/cneukom/scion-apps/commit/c1d27f058cc45ff5e2faf06802e968e4b6be5297).
+[7f4cca](https://github.com/cneukom/scion-apps/commit/7f4cca7645fe697eea9c5bd419069ad8ab3b3d63).
 
 For Hercules, get the source code from the [Hercules repository](https://gitlab.inf.ethz.ch/OU-PERRIG/hercules) and
 follow the build instructions there.
 The binary above has been built from commit
-[3e9e06](https://gitlab.inf.ethz.ch/OU-PERRIG/hercules/-/commit/3e9e06802dcf8633e9871a6ce22bfbd006ded220).
+[4564cd](https://gitlab.inf.ethz.ch/OU-PERRIG/hercules/-/commit/4564cdb9980ad66080b0875ff72f810e894511a5).
 
 
 ### Get started
 
-To start the scionFTP client, you need to know your local SCION address and append a free port number.
-It should then look something like `64-2:0:b,[192.33.125.17]:10001`.
-
 If you want to use the Hercules subsystem, you need to pass Hercules' path using `-hercules`, e.g.:
 
 ```bash
-$ ./scion-ftp -local YOUR_LOCAL_SICON_ADDRESS_WITH_PORT -hercules ./hercules
+$ ./scion-ftp -hercules ./hercules
 ```
 
 **Do not run** this command with root permissions, `scion-ftp` will invoke Hercules using `sudo`.
 
-After starting the scionFTP client, connect to the DOI scionFTP server and log in:
+After starting the scionFTP client, connect to the DOI scionFTP server:
 
 ```
 > connect 64-2:0:b,[192.33.125.17]:2121
-> login public readonly
 ```
 
-Once logged in, you can use `ls`, `cd` and `pwd` to look around and `get` or `geth` to download files.
+Since it supports anonymous FTP, you don't need to log in explicitly. You can use `ls`, `cd` and `pwd` to look around
+and `get` or `geth` to download files.
 
 #### Configuration for Hercules File Transfers
 
@@ -125,23 +124,19 @@ or you can configure the NIC manually using `ethtool`.
 
 ##### Option 1: Use a Configuration File for Hercules
 
-You can pass options to Hercules by specifying a configuration file as an optional third argument to `geth`.
+You can pass configuration options to Hercules in a `hercules.toml` file.
+The ScionFTP client expects this file to be in your current working directory, in `/etc` or in `/etc/scion-ftp`.
 
-Create a configuration file (e.g. `hercules-config.toml`) with the following contents:
+Create a `hercules.toml` file with the following contents:
 
 ```bash
 Direction = "download"
 ConfigureQueues = true
+Interface = "INTERFACE_NAME"
 Queues = [ 1 ] # This line is optional; if you specify it, make sure to use a valid queue number
 ```
 
 You can find the number of available queues with `ethtool -n INTERFACE_NAME`.
-
-Try to download the file using the configuration, e.g.:
-
-```
-> geth datasets/sls/X02DA/Data20/e11218/disk4/ElseMarieFossil/PP43780a.tar /tmp/test /path/to/hercules-config.toml
-```
 
 ##### Option 2: Configure the NIC Manually
 
