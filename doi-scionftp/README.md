@@ -22,7 +22,7 @@ Ask your network/system administrator to get a SCION connection.
 To test your SCION connection, ping our server at PSI:
  
 ```bash
-$ scion ping 64-2:0:b,[192.33.125.17] -c 3
+$ scion ping 64-2:0:b,[192.33.125.16] -c 3
 ```
 
 Its output should look similar to this:
@@ -32,11 +32,11 @@ Resolved local address:
   (your IP address)
 Using path:
   Hops: [(your path)] MTU: 1472, NextHop: (next hop IP address):30042
-120 bytes from 64-2:0:b,[192.33.125.17] scmp_seq=0 time=3.305ms
-120 bytes from 64-2:0:b,[192.33.125.17] scmp_seq=1 time=3.177ms
-120 bytes from 64-2:0:b,[192.33.125.17] scmp_seq=2 time=2.944ms
+120 bytes from 64-2:0:b,[192.33.125.16] scmp_seq=0 time=3.305ms
+120 bytes from 64-2:0:b,[192.33.125.16] scmp_seq=1 time=3.177ms
+120 bytes from 64-2:0:b,[192.33.125.16] scmp_seq=2 time=2.944ms
 
---- 64-2:0:b,[192.33.125.17:0] statistics ---
+--- 64-2:0:b,[192.33.125.16:0] statistics ---
 3 packets transmitted, 3 received, 0% packet loss, time 2.015354s
 ```
 
@@ -91,7 +91,7 @@ $ ./scion-ftp -hercules ./hercules
 After starting the scionFTP client, connect to the DOI scionFTP server:
 
 ```
-> connect 64-2:0:b,[192.33.125.17]:2121
+> connect 64-2:0:b,[192.33.125.16]:2121
 ```
 
 Since it supports anonymous FTP, you don't need to log in explicitly. You can use `ls`, `cd` and `pwd` to look around
